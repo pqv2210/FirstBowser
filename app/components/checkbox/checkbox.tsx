@@ -1,23 +1,24 @@
-import * as React from "react"
-import { TouchableOpacity, TextStyle, ViewStyle, View } from "react-native"
-import { Text } from "../text"
-import { color, spacing } from "../../theme"
-import { CheckboxProps } from "./checkbox.props"
-import { mergeAll, flatten } from "ramda"
+// Copyright (c) 2019-present LVT, Personal. All Rights Reserved.
+import * as React from 'react'
+import {TouchableOpacity, TextStyle, ViewStyle, View} from 'react-native'
+import {Text} from '../text'
+import {color, spacing} from '../../theme'
+import {CheckboxProps} from './checkbox.props'
+import {mergeAll, flatten} from 'ramda'
 
 const ROOT: ViewStyle = {
-  flexDirection: "row",
+  flexDirection: 'row',
   paddingVertical: spacing[1],
-  alignSelf: "flex-start",
+  alignSelf: 'flex-start',
 }
 
-const DIMENSIONS = { width: 16, height: 16 }
+const DIMENSIONS = {width: 16, height: 16}
 
 const OUTLINE: ViewStyle = {
   ...DIMENSIONS,
   marginTop: 2, // finicky and will depend on font/line-height/baseline/weather
-  justifyContent: "center",
-  alignItems: "center",
+  justifyContent: 'center',
+  alignItems: 'center',
   borderWidth: 1,
   borderColor: color.primaryDarker,
   borderRadius: 1,
@@ -29,7 +30,7 @@ const FILL: ViewStyle = {
   backgroundColor: color.primary,
 }
 
-const LABEL: TextStyle = { paddingLeft: spacing[2] }
+const LABEL: TextStyle = {paddingLeft: spacing[2]}
 
 export function Checkbox(props: CheckboxProps) {
   const numberOfLines = props.multiline ? 0 : 1
@@ -47,8 +48,13 @@ export function Checkbox(props: CheckboxProps) {
       onPress={onPress}
       style={rootStyle}
     >
-      <View style={outlineStyle}>{props.value && <View style={fillStyle} />}</View>
-      <Text text={props.text} tx={props.tx} numberOfLines={numberOfLines} style={LABEL} />
+      <View style={outlineStyle}>{props.value && <View style={fillStyle}/>}</View>
+      <Text
+        text={props.text}
+        tx={props.tx}
+        numberOfLines={numberOfLines}
+        style={LABEL}
+      />
     </TouchableOpacity>
   )
 }

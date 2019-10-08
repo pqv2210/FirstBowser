@@ -1,23 +1,21 @@
-// Welcome to the main entry point of the app.
-//
-// In this file, we'll be kicking off our app or storybook.
+// Copyright (c) 2019-present LVT, Personal. All Rights Reserved.
 
-import "./i18n"
-import React, { useState, useEffect } from "react"
-import { AppRegistry, YellowBox } from "react-native"
-import { StatefulNavigator, BackButtonHandler, exitRoutes } from "./navigation"
-import { StorybookUIRoot } from "../storybook"
-import { RootStore, RootStoreProvider, setupRootStore } from "./models/root-store"
+import './i18n'
+import React, {useState, useEffect} from 'react'
+import {AppRegistry, YellowBox} from 'react-native'
+import {StatefulNavigator, BackButtonHandler, exitRoutes} from './navigation'
+import {StorybookUIRoot} from '../storybook'
+import {RootStore, RootStoreProvider, setupRootStore} from './models/root-store'
 
-import { contains } from "ramda"
+import {contains} from 'ramda'
 
 /**
  * Ignore some yellowbox warnings. Some of these are for deprecated functions
  * that we haven't gotten around to replacing yet.
  */
 YellowBox.ignoreWarnings([
-  "componentWillMount is deprecated",
-  "componentWillReceiveProps is deprecated",
+  'componentWillMount is deprecated',
+  'componentWillReceiveProps is deprecated',
 ])
 
 /**
@@ -26,10 +24,10 @@ YellowBox.ignoreWarnings([
  * points RN's AsyncStorage at the community one, fixing the warning. Here's the
  * Storybook issue about this: https://github.com/storybookjs/storybook/issues/6078
  */
-const ReactNative = require("react-native")
-Object.defineProperty(ReactNative, "AsyncStorage", {
+const ReactNative = require('react-native')
+Object.defineProperty(ReactNative, 'AsyncStorage', {
   get(): any {
-    return require("@react-native-community/async-storage").default
+    return require('@react-native-community/async-storage').default
   },
 })
 
@@ -66,7 +64,7 @@ export const App: React.FunctionComponent<{}> = () => {
   return (
     <RootStoreProvider value={rootStore}>
       <BackButtonHandler canExit={canExit}>
-        <StatefulNavigator />
+        <StatefulNavigator/>
       </BackButtonHandler>
     </RootStoreProvider>
   )
@@ -75,7 +73,7 @@ export const App: React.FunctionComponent<{}> = () => {
 /**
  * This needs to match what's found in your app_delegate.m and MainActivity.java.
  */
-const APP_NAME = "NewBowser"
+const APP_NAME = 'NewBowser'
 
 // Should we show storybook instead of our app?
 //

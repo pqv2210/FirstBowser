@@ -1,10 +1,11 @@
-import * as React from "react"
-import { View, TextInput, TextStyle, ViewStyle } from "react-native"
-import { color, spacing, typography } from "../../theme"
-import { translate } from "../../i18n"
-import { Text } from "../text"
-import { TextFieldProps } from "./text-field.props"
-import { mergeAll, flatten } from "ramda"
+// Copyright (c) 2019-present LVT, Personal. All Rights Reserved.
+import * as React from 'react'
+import {View, TextInput, TextStyle, ViewStyle} from 'react-native'
+import {color, spacing, typography} from '../../theme'
+import {translate} from '../../i18n'
+import {Text} from '../text'
+import {TextFieldProps} from './text-field.props'
+import {mergeAll, flatten} from 'ramda'
 
 // the base styling for the container
 const CONTAINER: ViewStyle = {
@@ -32,19 +33,19 @@ const enhance = (style, styleOverride) => {
 /**
  * A component which has a label and an input together.
  */
-export const TextField: React.FunctionComponent<TextFieldProps> = props => {
+export const TextField: React.FunctionComponent<TextFieldProps> = (props) => {
   const {
     placeholderTx,
     placeholder,
     labelTx,
     label,
-    preset = "default",
+    preset = 'default',
     style: styleOverride,
     inputStyle: inputStyleOverride,
     forwardedRef,
     ...rest
   } = props
-  let containerStyle: ViewStyle = { ...CONTAINER, ...PRESETS[preset] }
+  let containerStyle: ViewStyle = {...CONTAINER, ...PRESETS[preset]}
   containerStyle = enhance(containerStyle, styleOverride)
 
   let inputStyle: TextStyle = INPUT
@@ -53,7 +54,11 @@ export const TextField: React.FunctionComponent<TextFieldProps> = props => {
 
   return (
     <View style={containerStyle}>
-      <Text preset="fieldLabel" tx={labelTx} text={label} />
+      <Text
+        preset='fieldLabel'
+        tx={labelTx}
+        text={label}
+      />
       <TextInput
         placeholder={actualPlaceholder}
         placeholderTextColor={color.palette.lighterGrey}

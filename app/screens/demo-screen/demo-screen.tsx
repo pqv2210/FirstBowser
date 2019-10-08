@@ -1,18 +1,19 @@
-import * as React from "react"
-import { Image, ImageStyle, Platform, TextStyle, View, ViewStyle } from "react-native"
-import { NavigationScreenProps } from "react-navigation"
-import { Screen } from "../../components/screen"
-import { Text } from "../../components/text"
-import { Button } from "../../components/button"
-import { Wallpaper } from "../../components/wallpaper"
-import { Header } from "../../components/header"
-import { color, spacing } from "../../theme"
-import { logoIgnite, heart } from "./"
-import { BulletItem } from "../../components/bullet-item"
-import { Api } from "../../services/api"
-import { save } from "../../utils/storage"
+// Copyright (c) 2019-present LVT, Personal. All Rights Reserved.
+import * as React from 'react'
+import {Image, ImageStyle, Platform, TextStyle, View, ViewStyle} from 'react-native'
+import {NavigationScreenProps} from 'react-navigation'
+import {Screen} from '../../components/screen'
+import {Text} from '../../components/text'
+import {Button} from '../../components/button'
+import {Wallpaper} from '../../components/wallpaper'
+import {Header} from '../../components/header'
+import {color, spacing} from '../../theme'
+import {logoIgnite, heart} from './'
+import {BulletItem} from '../../components/bullet-item'
+import {Api} from '../../services/api'
+import {save} from '../../utils/storage'
 
-const FULL: ViewStyle = { flex: 1 }
+const FULL: ViewStyle = {flex: 1}
 const CONTAINER: ViewStyle = {
   backgroundColor: color.transparent,
   paddingHorizontal: spacing[4],
@@ -20,9 +21,9 @@ const CONTAINER: ViewStyle = {
 const DEMO: ViewStyle = {
   paddingVertical: spacing[4],
   paddingHorizontal: spacing[4],
-  backgroundColor: "#5D2555",
+  backgroundColor: '#5D2555',
 }
-const BOLD: TextStyle = { fontWeight: "bold" }
+const BOLD: TextStyle = {fontWeight: 'bold'}
 const DEMO_TEXT: TextStyle = {
   ...BOLD,
   fontSize: 13,
@@ -37,33 +38,33 @@ const HEADER_TITLE: TextStyle = {
   ...BOLD,
   fontSize: 12,
   lineHeight: 15,
-  textAlign: "center",
+  textAlign: 'center',
   letterSpacing: 1.5,
 }
 const TITLE: TextStyle = {
   ...BOLD,
   fontSize: 28,
   lineHeight: 38,
-  textAlign: "center",
+  textAlign: 'center',
   marginBottom: spacing[5],
 }
 const TAGLINE: TextStyle = {
-  color: "#BAB6C8",
+  color: '#BAB6C8',
   fontSize: 15,
   lineHeight: 22,
   marginBottom: spacing[4] + spacing[1],
 }
 const IGNITE: ImageStyle = {
   marginVertical: spacing[6],
-  alignSelf: "center",
+  alignSelf: 'center',
 }
 const LOVE_WRAPPER: ViewStyle = {
-  flexDirection: "row",
-  alignItems: "center",
-  alignSelf: "center",
+  flexDirection: 'row',
+  alignItems: 'center',
+  alignSelf: 'center',
 }
 const LOVE: TextStyle = {
-  color: "#BAB6C8",
+  color: '#BAB6C8',
   fontSize: 15,
   lineHeight: 22,
 }
@@ -71,10 +72,10 @@ const HEART: ImageStyle = {
   marginHorizontal: spacing[2],
   width: 10,
   height: 10,
-  resizeMode: "contain",
+  resizeMode: 'contain',
 }
 const HINT: TextStyle = {
-  color: "#BAB6C8",
+  color: '#BAB6C8',
   fontSize: 12,
   lineHeight: 15,
   marginVertical: spacing[2],
@@ -82,76 +83,104 @@ const HINT: TextStyle = {
 
 export interface DemoScreenProps extends NavigationScreenProps<{}> {}
 
-export const DemoScreen: React.FunctionComponent<DemoScreenProps> = props => {
+export const DemoScreen: React.FunctionComponent<DemoScreenProps> = (props) => {
   const goBack = React.useMemo(() => () => props.navigation.goBack(null), [props.navigation])
 
   const demoReactotron = React.useMemo(
     () => async () => {
-      console.tron.log("Your Friendly tron log message")
-      console.tron.logImportant("I am important")
+      console.tron.log('Your Friendly tron log message')
+      console.tron.logImportant('I am important')
       console.tron.display({
-        name: "DISPLAY",
+        name: 'DISPLAY',
         value: {
           numbers: 1,
-          strings: "strings",
+          strings: 'strings',
           booleans: true,
           arrays: [1, 2, 3],
           objects: {
             deeper: {
               deeper: {
-                yay: "👾",
+                yay: '👾',
               },
             },
           },
           functionNames: function hello() {},
         },
-        preview: "More control with display()",
+        preview: 'More control with display()',
         important: true,
         image: {
           uri:
-            "https://avatars2.githubusercontent.com/u/3902527?s=200&u=a0d16b13ed719f35d95ca0f4440f5d07c32c349a&v=4",
+            'https://avatars2.githubusercontent.com/u/3902527?s=200&u=a0d16b13ed719f35d95ca0f4440f5d07c32c349a&v=4',
         },
       })
+
       // make an API call for the demo
       // Don't do API like this, use store's API
       const demo = new Api()
       demo.setup()
-      demo.getUser("1")
+      demo.getUser('1')
+
       // Let's do some async storage stuff
-      await save("Cool Name", "Boaty McBoatface")
+      await save('Cool Name', 'Boaty McBoatface')
     },
     [],
   )
 
   return (
     <View style={FULL}>
-      <Wallpaper />
-      <Screen style={CONTAINER} preset="scroll" backgroundColor={color.transparent}>
+      <Wallpaper/>
+      <Screen
+        style={CONTAINER}
+        preset='scroll'
+        backgroundColor={color.transparent}
+      >
         <Header
-          headerTx="demoScreen.howTo"
-          leftIcon="back"
+          headerTx='demoScreen.howTo'
+          leftIcon='back'
           onLeftPress={goBack}
           style={HEADER}
           titleStyle={HEADER_TITLE}
         />
-        <Text style={TITLE} preset="header" tx="demoScreen.title" />
-        <Text style={TAGLINE} tx="demoScreen.tagLine" />
-        <BulletItem text="Load up Reactotron!  You can inspect your app, view the events, interact, and so much more!" />
-        <BulletItem text="Integrated here, Navigation with State, TypeScript, Storybook, Solidarity, and i18n." />
+        <Text
+          style={TITLE}
+          preset='header'
+          tx='demoScreen.title'
+        />
+        <Text
+          style={TAGLINE}
+          tx='demoScreen.tagLine'
+        />
+        <BulletItem text='Load up Reactotron!  You can inspect your app, view the events, interact, and so much more!'/>
+        <BulletItem text='Integrated here, Navigation with State, TypeScript, Storybook, Solidarity, and i18n.'/>
         <View>
           <Button
             style={DEMO}
             textStyle={DEMO_TEXT}
-            tx="demoScreen.reactotron"
+            tx='demoScreen.reactotron'
             onPress={demoReactotron}
           />
-          <Text style={HINT} tx={`demoScreen.${Platform.OS}ReactotronHint`} />
+          <Text
+            style={HINT}
+            tx={`demoScreen.${Platform.OS}ReactotronHint`}
+          />
         </View>
-        <Image source={logoIgnite} style={IGNITE} />
+        <Image
+          source={logoIgnite}
+          style={IGNITE}
+        />
         <View style={LOVE_WRAPPER}>
-          <Text style={LOVE} text="Made with" />
-          <Image source={heart} style={HEART} />
-          <Text style={LOVE} text="by Infinite Red" />
+          <Text
+            style={LOVE}
+            text='Made with'
+          />
+          <Image
+            source={heart}
+            style={HEART}
+          />
+          <Text
+            style={LOVE}
+            text='by Infinite Red'
+          />
         </View>
       </Screen>
     </View>

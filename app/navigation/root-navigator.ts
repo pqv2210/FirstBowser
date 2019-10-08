@@ -1,12 +1,14 @@
-import { createStackNavigator } from "react-navigation"
-import { PrimaryNavigator } from "./primary-navigator"
+// Copyright (c) 2019-present LVT, Personal. All Rights Reserved.
+import {createStackNavigator} from 'react-navigation'
+import {MainNavigator} from './main-navigator'
 
 export const RootNavigator = createStackNavigator(
   {
-    primaryStack: { screen: PrimaryNavigator },
+    MainStack: {screen: MainNavigator},
   },
   {
-    headerMode: "none",
-    navigationOptions: { gesturesEnabled: false },
+    headerMode: 'none',
+    initialRouteName: 'MainStack',
+    navigationOptions: {gesturesEnabled: false},
   },
 )
